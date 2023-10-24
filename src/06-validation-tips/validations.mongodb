@@ -1,0 +1,42 @@
+use('platzi_store_v2')
+
+db.getCollectionInfos()
+
+// Con esto se puede actualizar el esquema de la colección sin dropearla
+db.runCommand({
+    collMod: 'users',
+    validator: {
+        $jsonSchema: {
+            bsonType: 'object',
+            required: ['email', 'password', 'role'],
+            additionalProperties: true,
+            properties: {
+                name: {
+                    bsonType: 'string'
+                },
+                last_name: {
+                    bsonType: 'string'
+                },
+                email: {
+                    bsonType: 'string',
+                    pattern: "^[A-Za-z0-9\d.-]{1,}@[A-Za-z\d.-]{1,}[.]{1}[A-Za-z\d.-]{1,}$"
+                },
+                password: {
+                    bsonType: 'string',
+                    pattern: '^[A-Za-z0-9]{8,}$'
+                },
+                age: {
+                    bsonType: 'number',
+                    minimum: 18,
+                    maximum: 99
+                },
+                is_single: {
+                    bsonType: 'bool'
+                },
+                role: {
+                    enum: ['customer', 'seller', 'admin']
+                }
+            }
+        }
+    }
+})
