@@ -1,0 +1,16 @@
+use('platzi_store_v2')
+
+db.stores.insertOne({
+    store_id: 'ST001',
+    name: 'Rochetie',
+    address: 'Cr 243'
+})
+
+db.store_details.insertOne({
+    store_id: 'ST001',
+    description: 'Text text text',
+    manager: {
+        email: 'juanda@gmail.com',
+        cellphone: '3218199643'
+    }
+})

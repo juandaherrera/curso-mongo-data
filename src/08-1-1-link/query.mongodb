@@ -1,0 +1,15 @@
+use('platzi_store_v2')
+
+db.stores.find({ store_id: 'ST001' })
+db.store_details.find({ store_id: 'ST001' })
+
+db.stores.aggregate([
+    {
+        $lookup: {
+          from: 'store_details',
+          localField: 'store_id',
+          foreignField: 'store_id',
+          as: 'detail'
+        }
+    }
+])

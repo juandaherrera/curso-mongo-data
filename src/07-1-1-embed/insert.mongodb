@@ -1,0 +1,18 @@
+use('platzi_store_v2')
+
+db.users.insertOne({
+    email: 'juandaherreparra@gmail.com',
+    password: 'juanda123456',
+    role: 'costumer',
+    age: 23,
+    address: {
+        street: 'Cl. 892',
+        city: 'Cali',
+        zip: '753333'
+    },
+    shipping_address: {
+        street: 'Cl. 892 No. 12-43',
+        city: 'Palmira',
+        zip: '753322'
+    },
+})

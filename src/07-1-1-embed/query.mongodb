@@ -1,0 +1,5 @@
+use('platzi_store_v2')
+
+db.users.find({
+    "address.city": "Palmira"
+})
